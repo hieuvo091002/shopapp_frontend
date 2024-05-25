@@ -1,0 +1,43 @@
+<!-- <div *ngIf="updatedCategory">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Update Category</h3>
+        <form (ngSubmit)="updateCategory()">
+          <div class="form-group mb-3">
+            <label for="name">Name:</label>
+            <input type="text" id="name" [(ngModel)]="updateCategoryDTO.name" name="name" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="app-title">
+  <ul class="app-breadcrumb breadcrumb">
+    <li class="breadcrumb-item">Danh sách danh mục</li>
+    <li class="breadcrumb-item"><a href="">Sửa danh mục</a></li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="tile">
+
+      <h3 class="tile-title">Sửa danh mục</h3>
+      <div class="tile-body">
+        <form class="row" enctype="multipart/form-data">
+          <div class="form-group col-md-6">
+            <label class="control-label">Name:</label>
+            <input type="text" id="name" [(ngModel)]="updateCategoryDTO.name" name="name" class="form-control" required>
+          </div>
+        </form>
+      </div>
+      <button class="btn btn-save" (click)="updateCategory()" type="button">Sửa</button>
+      <!-- <a class="btn btn-cancel" href="/doc/table-data-table.html">Hủy bỏ</a> -->
+    </div>
+  </div>
+</div>

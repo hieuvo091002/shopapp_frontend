@@ -1,0 +1,94 @@
+<!-- Checkout Section Begin -->
+<app-header></app-header>
+<section class="checkout spad">
+  <div class="container">
+    <div class="checkout__form">
+      <h4>Thông tin người nhận</h4>
+      <form [formGroup]="orderForm">
+        <div class="row">
+          <div class="col-lg-7 col-md-6">
+            <div class="checkout__input">
+              <p>Họ và tên<span>*</span></p>
+              <input type="text" formControlName="fullname" class="form-control" id="fullname"
+                [class.is-invalid]="orderForm.get('fullname')!.invalid && orderForm.get('fullname')!.touched">
+              <div *ngIf="orderForm.get('fullname')!.invalid && orderForm.get('fullname')!.touched"
+                class="invalid-feedback">
+                Họ và tên là trường bắt buộc.
+              </div>
+            </div>
+            <div class="checkout__input">
+              <p>Địa chỉ<span>*</span></p>
+              <input type="text" class="form-control" formControlName="address" placeholder="Địa chỉ" required
+                id="address"
+                [class.is-invalid]="orderForm.get('address')!.invalid && orderForm.get('address')!.touched">
+              <div *ngIf="orderForm.get('address')!.invalid && orderForm.get('address')!.touched"
+                class="invalid-feedback">
+                Địa chỉ là trường bắt buộc và ít nhất 5 ký tự.
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="checkout__input">
+                  <p>Số điện thoại<span>*</span></p>
+                  <input type="text" class="form-control" formControlName="phone_number" placeholder="Số điện thoại"
+                    required id="phone"
+                    [class.is-invalid]="orderForm.get('phone_number')!.invalid && orderForm.get('phone_number')!.touched">
+                  <div *ngIf="orderForm.get('phone_number')!.invalid && orderForm.get('phone_number')!.touched"
+                    class="invalid-feedback">
+                    Số điện thoại là trường bắt buộc và ít nhất 6 ký tự.
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="checkout__input">
+                  <p>Email</p>
+                  <input type="text" formControlName="email" class="form-control" id="email"
+                    [class.is-invalid]="orderForm.get('email')!.invalid && orderForm.get('email')!.touched">
+                  <div *ngIf="orderForm.get('email')!.invalid && orderForm.get('email')!.touched"
+                    class="invalid-feedback">
+                    {{ orderForm.get('email')!.hasError('email') ? 'Email không hợp lệ' : 'Email là trường bắt buộc'
+                    }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="checkout__input">
+              <p>Ghi chú</p>
+              <input type="text" class="form-control" formControlName="note" placeholder="Ghi chú" required id="note">
+            </div>
+            <div class="checkout__input">
+              <p>Phương thức vận chuyển<span>*</span></p>
+              <select class="form-control" id="shippingMethod" formControlName="shipping_method">
+                <option value="express">Nhanh (Express)</option>
+                <option value="normal">Thường (Normal)</option>
+              </select>
+            </div>
+            <div class="checkout__input">
+              <p>Phương thức thanh toán<span>*</span></p>
+              <select class="form-control" id="paymentMethod" formControlName="payment_method">
+                <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                <option value="other">Thanh toán khác</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6">
+            <div class="checkout__order">
+              <h4>Hóa đơn</h4>
+              <div class="checkout__order__products">Sản phẩm <span>Giá</span></div>
+              <ul>
+
+                <li *ngFor="let item of cartItems; let i = index">{{ item.product.name }} <span>{{ item.product.price |
+                    number:'1.2-2' }}</span></li>
+              </ul>
+              <div class="checkout__order__subtotal">Tổng giá <span>{{ totalAmount | number:'1.2-2'}}</span></div>
+              <button type="submit" (click)="placeOrder()" class="site-btn">Đặt hàng</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- Checkout Section End -->
+<app-footer></app-footer>

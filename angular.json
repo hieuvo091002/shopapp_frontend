@@ -1,0 +1,154 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "shopapp-angular": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/shopapp-angular",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [              
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/styles.scss",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/elegant-icons.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/jquery-ui.min.css",
+              "src/assets/css/nice-select.css",
+              "src/assets/css/owl.carousel.min.css",
+              "src/assets/css/slicknav.min.css",
+              "src/assets/css/style.css",
+              "src/assets/sass/_base.scss",
+              "src/assets/sass/_blog-details.scss",
+              "src/assets/sass/_blog-sidebar.scss",
+              "src/assets/sass/_blog.scss",
+              "src/assets/sass/_breadcrumb.scss",
+              "src/assets/sass/_checkout.scss",
+              "src/assets/sass/_contact.scss",
+              "src/assets/sass/_footer.scss",
+              "src/assets/sass/_header.scss",
+              "src/assets/sass/_hero.scss",
+              "src/assets/sass/_home-page.scss",
+              "src/assets/sass/_mixins.scss",
+              "src/assets/sass/_responsive.scss",
+              "src/assets/sass/_shop-details.scss",
+              "src/assets/sass/_shop-grid.scss",
+              "src/assets/sass/_shoping-cart.scss",
+              "src/assets/sass/_sidebar.scss",
+              "src/assets/sass/_variable.scss",
+              "src/assets/sass/style.scss"
+            ],
+            "scripts": [
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/jquery-3.3.1.min.js",
+              "src/assets/js/jquery-ui.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/jquery.nice-select.min.js",
+              "src/assets/js/jquery.slicknav.js",
+              "src/assets/js/mixitup.min.js",
+              "src/assets/js/owl.carousel.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1000kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "10kb",
+                  "maximumError": "10kb"
+                }
+              ]              
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "shopapp-angular:build:production"
+            },
+            "development": {
+              "browserTarget": "shopapp-angular:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "shopapp-angular:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "12eead7c-ea1a-4218-9ebd-51ba7ffceaee"
+  }
+}
